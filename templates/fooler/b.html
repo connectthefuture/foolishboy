@@ -1,26 +1,28 @@
-#coding:utf-8
 <!DOCTYPE html>
     <html>
     <head>
         <title>Rango</title>
     </head>
     <body>
-        <h1>Add a Category</h1>
+        <h1>show your foolish level</h1>
 
         <form id="category_form" method="post" action="/fooler/add_question">
+  <div class="form-group">
+    
+
 
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
             {% endfor %}
-
+						<label for="name">question</label>
             {% for field in form.visible_fields %}
                 {{ field.errors }}
                 {{ field.help_text }}
                 {{ field }}
             {% endfor %}
-
-            <input type="submit" name="submit" value="Create Category" />
+  </div>
+            <input type="submit" name="submit" value="Create Question" />
         </form>
     </body>
     </html>

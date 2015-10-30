@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 import datetime
 import django.utils.timezone as timezone
 class questionForm(forms.ModelForm):
-	qtitle=forms.CharField(max_length=1024,help_text="please input question")
+	qtitle=forms.CharField(max_length=1024,widget=forms.Textarea(attrs={'class':"form-control",'rows':3}))
 	qbonus=forms.IntegerField(widget=forms.HiddenInput(),initial=0)
 	qtime=forms.DateTimeField(widget=forms.HiddenInput(),required=False)
 	class Meta:

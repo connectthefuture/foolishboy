@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+{% load staticfiles %}
 <html>
 <head>
 	<title>fooler</title>
@@ -15,6 +15,11 @@
 			
 		}
 	</script>
+	<script type="text/javascript">
+  document.getElementById("bt").onclick = function(){
+  	document.getElementById("oh").value={{question.qtitle}};
+  }
+  </script>
 </head>
 <style>
 	#tt
@@ -24,11 +29,14 @@
 	}
 	#kuang
 	{
-	float:right
+	float:right;
 	}
-	
-
+	.title
+	{
+		display:inline;
+	}
 </style>
+
 <body>
 	<div class="container">
 		<div class="row">
@@ -51,7 +59,10 @@
 	<div class="row"  id='tt'><h1>FOOLISH</h1></div>
 	
 	<div class="row">
-		<button onclick='javascript:window.location.href="/fooler/add_question/"'>I have a question</button>
+		<button onclick='javascript:window.location.href="/fooler/add_question/"' class="btn btn-success">I have a question</button>
+		<img src={% static "images/donkey.jpg" %}   alt="Picture of jordan" class="img-circle">
+		<img src={% static "images/b.png" %} alt="Picture of jordan" />
+		<img src="http://pic44.nipic.com/20140704/6608733_093311400000_2.jpg" alt="Picture of jordan" />
 	</div>
 	
 	<div class="row">
@@ -64,7 +75,7 @@
 	<h4>questions list</h4>
 		<ul>
 		{% for question in questions %}
-		<li><a href="/fooler/{{question.id}}/">{{question.qtitle}}</a><button onclick='func(question.title)'></button></li>
+		<li><h2 class="title"><a href="/fooler/{{question.id}}/">{{question.qtitle}}</a></h2><button id="bt" onclick='document.getElementById("oh").value={{question.qtitle}}' class="btn btn-info"></button></li>
 		{% endfor %}
 	</ul>
 	{% endif %}
