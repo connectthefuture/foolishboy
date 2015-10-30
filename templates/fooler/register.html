@@ -1,0 +1,26 @@
+#coding:utf-8
+<!DOCTYPE html>
+<html>
+<head>
+	<title>foolish</title>
+</head>
+
+<body>
+	<h1>register with fooler</h1>
+	{% if registered %}
+	fooler says:<strong>thank you for registering</strong>
+	<a href="/fooler/">return to the homepage</a>
+	{% else %}
+	fooler says: <strong>register here!</strong><br/>
+
+	<form id="user_form" method="post" action="fooler/register/">
+
+		{% csrf_token %}
+		{{ user_form.as_p }}
+		{{ profile_form.as_p }}
+
+		<input type="submit" name="submit" value="register" />
+	</form>
+	{% endif %}
+</body>
+</html>

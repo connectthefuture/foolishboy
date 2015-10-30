@@ -1,0 +1,29 @@
+#coding:utf-8
+<!DOCTYPE html>
+
+<html>
+<head>
+	<h1>hello</h1>
+<body>
+
+	{% if quest %}
+	<div>{{quest.qtitle}}</div>
+	{% endif %}
+	{% for ans in answers %}
+	<ul>
+		<li>{{ ans.qanswer }}</li>
+	</ul>
+	{% endfor %}
+        <form name="huifu" method="post" action="/fooler/huifu">
+        	{% csrf_token %}
+        	<input type="text" name='a' />
+        	<input type="hidden" name='b' value={{quest.id}}>
+
+            <input type="submit" name="submit" value="huifu" />
+        </form>
+</body>
+
+
+</head>
+
+</html>

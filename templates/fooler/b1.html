@@ -1,0 +1,65 @@
+#coding:utf-8
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="b.css"/>
+</head>
+
+<body>
+<div id="s_page">
+ <div id="sg_header">
+<div class="header">
+
+
+<div class="searchbox">
+
+<a href="/"><img src="{% static "images/c.jpg" %}" height="40" width="135" alt="logo" class="logo"></a>
+
+
+<form name="flpage" class="searchform" method="get" action="/">
+
+<div class="s_search_form">
+
+<div class="querybox">
+
+<div class="qborder">
+	<input class="query" type="text" element="input" value="" id="sb" name="w" maxlength="50" autocomplete="off" style="line-height:25px;"/>
+</div>
+
+</div>
+
+<div class="sbtn1">
+	<input value="search" class="search_bt" type="button" name="search"/>
+</div>
+
+<div class="sbtn2">
+	<input value="question" class="ask_bt" type="button" name="ask"/></div>
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+	 <h2>please input your question</h2>
+
+<form id="add_question" method="post" action="/fooler/add_question/">
+	{% csrf_token %}
+	{% for hidden in form.hidden_fields %}
+		{{hidden}}
+	{% endfor %}
+
+	{% for field in form.visibel_fields %}
+		{{field.errors}}
+		{{field.help_text}}
+		{{field}}
+	{% endfor %}
+
+<input type="submit" value="submit"/>
+</form>
+</body>
+</html>

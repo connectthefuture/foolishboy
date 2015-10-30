@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>fooler</title>
+	<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		function func(a)
+		{
+			
+			$('#oh').html(a)
+			
+		}
+	</script>
+</head>
+<style>
+	#tt
+	{
+	width:100%;
+	text-align:center;	
+	}
+	#kuang
+	{
+	float:right
+	}
+	
+
+</style>
+<body>
+	{% if user.is_authenticated %}
+	<h1>fooler says hello {{ user.username }}!</h1>
+	<a href="/fooler/logout/">logout</a><br />
+	{% else %}
+	<h1>fooler says...hello world!</h1>
+	{% endif %}
+	<div id='tt'><h1>FOOLISH</h1></div>
+	<div><a href="/fooler/register/">register here</a></div><a href="/fooler/login/">login</a>
+	<div>
+		<button onclick='javascript:window.location.href="/fooler/add_question/"'>tiwen</button>
+	</div>
+	{% if questions %}
+	<div>
+	<div id='kuang'><textarea id='oh'></textarea></div>
+	<ul>
+		{% for question in questions %}
+		<li><a href="/fooler/{{question.id}}/">{{question.qtitle}}</a><button onclick='func(question.title)'></button></li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	</div>
+</body>
+</html>
