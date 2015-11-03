@@ -1,4 +1,3 @@
-#coding:utf-8
 from django.shortcuts import render
 from fooler.models import question,answers
 from fooler.forms import questionForm,UserForm,UserProfileForm
